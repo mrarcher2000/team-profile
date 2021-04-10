@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/mrarcher2000/team-profile#readme",
   "dependencies": {
+    "inquirer": "^8.0.0",
     "jest": "^26.6.3"
   }
 }
