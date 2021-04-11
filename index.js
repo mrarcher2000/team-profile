@@ -6,6 +6,7 @@ const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
 const employeeArray = require('./src/employeeArray');
+const generateProfile = require('./src/generateProfile');
 
 
 const managerQuestions = [
@@ -121,7 +122,7 @@ const addNewIntern = function(answers) {
         let id = answers.id;
         let email = answers.email;
         let school = answers.school;
-        const intern = new Intern(name, id, email, github);
+        const intern = new Intern(name, id, email, school);
 
         employeeArray.push(intern);
         console.log('New Employee has been added!');
@@ -145,6 +146,8 @@ const mainMenuFunc = function() {
         }
 
         if(answers.mainMenu === 'Exit') {
+            let output = generateProfile(employeeArray);
+            console.log(output);
             return;
         }
     
