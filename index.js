@@ -1,3 +1,4 @@
+const { inheritInnerComments } = require('@babel/types');
 const inquirer = require('inquirer');
 
 const Employee = require('./lib/Employee');
@@ -80,25 +81,80 @@ const mainMenu = [
     {
         type: 'list',
         name: 'mainMenu',
-        message: "Welcome! Let's create your Team Profile!\nTo add a new Team Member, choose an option below: ",
-        choices: ['Manager', 'Engineer', 'Intern']
+        message: "Welcome! Let's create your Team Profile!\nTo add a new Team Member, choose an option below or press 'Exit' to finish: ",
+        choices: ['Manager', 'Engineer', 'Intern', 'Exit']
     }
 ];
 
 
-inquirer
+const addNewManager = function(answers) {
+    inquirer.prompt(managerQuestions).then(answers => {
+        let name = answers.name;  
+        let id = answers.id;
+        let email = answers.email;
+        let officeNumber = answers.officeNumber;
+        const manager = new Manager(name, id, email, officeNumber);
+
+        employeeArray.push(manager);
+        console.log('New Employee has been added!');
+        mainMenuFunc();
+})};
+
+
+const addNewEngineer = function(answers) {
+    inquirer.prompt(engineerQuestions).then(answers => {
+        let name = answers.name;  
+        let id = answers.id;
+        let email = answers.email;
+        let github = answers.github;
+        const engineer = new Engineer(name, id, email, github);
+
+        employeeArray.push(engineer);
+        console.log('New Employee has been added!');
+        mainMenuFunc();
+
+})};
+
+const addNewIntern = function(answers) {
+    inquirer.prompt(internQuestions).then(answers => {
+        let name = answers.name;  
+        let id = answers.id;
+        let email = answers.email;
+        let school = answers.school;
+        const intern = new Intern(name, id, email, github);
+
+        employeeArray.push(intern);
+        console.log('New Employee has been added!');
+        mainMenuFunc();
+})};
+
+const mainMenuFunc = function() {
+    inquirer
     .prompt(mainMenu)
     .then(answers => {
-        if (answers.mainMenu === 'Manager'){
-            inquirer.prompt(managerQuestions).then(answers => {
-                let name = answers.name;  
-                let id = answers.id;
-                let email = answers.email;
-                let officeNumber = answers.officeNumber;
-                const manager = new Manager(name, id, email, officeNumber);
+        if (answers.mainMenu === 'Manager') {
+            addNewManager(answers);
+        }
 
-                employeeArray.push(manager);
-                console.log(employeeArray);
-            });
-        };
+        if (answers.mainMenu === 'Engineer') {
+            addNewEngineer(answers);
+        }
+
+        if (answers.mainMenu === 'Intern') {
+            addNewIntern(answers);
+        }
+
+        if(answers.mainMenu === 'Exit') {
+            return;
+        }
+    
     });
+};
+
+
+const init = function() {
+    console.log('Loading Team Profile Generator...');
+    mainMenuFunc();
+};
+
+init();
