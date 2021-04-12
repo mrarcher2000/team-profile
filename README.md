@@ -39,9 +39,9 @@ Any contributions on this project are welcome. If you wish to contribute, please
 
 ## Tests
 
-    The node package Jest was used to create object tests for this project. A full description on how to use the Jest test developer can be reviewed at https://jestjs.io/. 
+The node package Jest was used to create object tests for this project. A full description on how to use the Jest test developer can be reviewed at https://jestjs.io/. 
     
-    To run the test module on the application, navigate to the folder holding the 'index.js' file and open it in the command line. Then, type the command 'npm test' to run the test code on the application. This ensures all objects have been downloaded and are running properly.
+To run the test module on the application, navigate to the folder holding the 'index.js' file and open it in the command line. Then, type the command 'npm test' to run the test code on the application. This ensures all objects have been downloaded and are running properly.
 
 ## Questions
 
