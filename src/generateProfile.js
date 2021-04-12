@@ -45,12 +45,12 @@ const parsedArrayFunc = function(employee){
             return `<div class='card m-4'>
             <div class='card-body'>
                 <h2 class='card-header bg-blue'>${employee.name}</h2><br>
-                <h3 class='card-subtitle text-muted'>${employee.getRole()}  <i class="bi bi-cup"></i></h3>
+                <h3 class='card-subtitle text-muted'>${employee.getRole()}  <i class="bi bi-file-person-fill"></i></h3>
                 <div class='card-text'>
                     <ul class='list-group list-group-flush'>
                         <li class='list-group-item'>ID: ${employee.id}</li>
                         <li class='list-group-item'>Email: <a href='mailto:${employee.email}'>${employee.email}</a></li>
-                        <li class='list-group-item'>Office Number: ${employee.getSchool()}</li>
+                        <li class='list-group-item'>School: ${employee.getSchool()}</li>
                     </ul>
                 </div>
             </div>
@@ -89,6 +89,7 @@ const generateProfile = function(employeeArray) {
         <title>My Team Profile</title>
     
         <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css' />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" />
         <link rel='stylesheet' href='./style.css'>
     </head>
     <body>
@@ -102,7 +103,6 @@ const generateProfile = function(employeeArray) {
         <div class='d-flex text-center' id='employees'>
     
          ${generateEmployeeCard(employeeArray)}
-        //employees arrray will generate employees here
     
         </div>
     

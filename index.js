@@ -1,5 +1,7 @@
 const { inheritInnerComments } = require('@babel/types');
 const inquirer = require('inquirer');
+const fs = require('fs');
+const path = require('path');
 
 const Employee = require('./lib/Employee');
 const Engineer = require('./lib/Engineer');
@@ -129,6 +131,8 @@ const addNewIntern = function(answers) {
         mainMenuFunc();
 })};
 
+
+
 const mainMenuFunc = function() {
     inquirer
     .prompt(mainMenu)
@@ -146,11 +150,28 @@ const mainMenuFunc = function() {
         }
 
         if(answers.mainMenu === 'Exit') {
-            let output = generateProfile(employeeArray);
-            console.log(output);
+            console.log(employeeArray);
+            writeToFile(employeeArray);
             return;
         }
     
+    });
+};
+
+
+function writeToFile(employeeArray) {
+    let fileName = path.join(__dirname, './dist/team-profile.html');
+    let oldStyleSheet = path.join(__dirname, './src/style.css');
+    let styleSheet = path.join(__dirname, './dist/style.css');
+
+    fs.copyFile(oldStyleSheet, styleSheet, (err) => {
+        if (err) throw err;
+        console.log('Stylesheet Copy Successful');
+    });
+
+    fs.writeFile(fileName, generateProfile(employeeArray), (err) => {
+        if (err) throw err;
+        console.log("Your Team Profile has been generated.\n Checkout the folder marked 'dist' for your file!");
     });
 };
 
