@@ -33,6 +33,8 @@ To start the application, open the folder in the command line and type 'node ind
 
  Now, navigate to the folder labeled 'dist/' and your files are there and ready to use! To view the HTML, simply open the page in your browser. 
 
+ A quick walkthrough of how to use the app can be found at https://drive.google.com/file/d/1CxtG7OH8fB5UT0nQ_dlcE-1wqDx9OCs2/view.
+
 ## Contributing
 
 Any contributions on this project are welcome. If you wish to contribute, please give credit to the original developer and GitHub repository at https://github.com/mrarcher2000/team-profile. 
